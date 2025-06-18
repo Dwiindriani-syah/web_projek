@@ -359,8 +359,8 @@ body {
 
 .contact .row form {
   flex: 1 1 45rem;
-  padding: 5rem 2rem;
   text-align: center;
+  padding: 5rem 2rem;
 }
 
 .contact .row form .input-group {
@@ -549,6 +549,10 @@ footer .credit a {
   }
   .navbar .navbar-nav a:hover::after {
     transform: scaleX(0.2);
+  }
+
+  .modal-content {
+    flex-wrap: wrap;
   }
 
 /* phone */

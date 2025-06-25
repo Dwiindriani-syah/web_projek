@@ -18,6 +18,12 @@
 
     <!-- my style -->
     <link rel="stylesheet" href="style.css" />
+
+    <!--Alpinejs-->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!--App-->
+    <script src="src/app.js"></script>
   </head>
 
   <body>
@@ -80,6 +86,9 @@
         <h1>Selamat Datang Di <span>Kedai Kopi Nusantara</span>Kami</h1>
         <p>Secangkir Rasa, Sejuta Cerita</p>
       </main>
+      <div class="mask-container">
+        <main class="content">
+        </main>
       </div>
     </section>
     <!-- hero section end-->
@@ -161,26 +170,25 @@
     </section>
     <!-- menu section end -->
 
-      <!-- products section start -->
-    <section class="products" id="products">
+    <!-- products section start -->
+    <section class="products" id="products" x-data="products">
       <h2><span>Produk Unggulan</span> Kami</h2>
       <p>
         Biji kopi pilihan dengan rasa kuat dan aroma nikmat.
       </p>
 
       <div class="row">
+        <template x-for="(item, index) in items" x-key="index">
         <div class="product-card">
           <div class="product-icons">
             <a href="#"><i data-feather="shopping-cart"></i></a>
-            <a href="#" class="item-detail-button"
-              ><i data-feather="eye"></i
-            ></a>
+            <a href="#"><i data-feather="eye"></i></a>
           </div>
           <div class="product-image">
-            <img src="img/produk1.jpeg" alt="Product 1" />
+            <img :src="'img/' + item.img" :alt="item.name" />
           </div>
           <div class="product-content">
-            <h3>Jagat Kopi</h3>
+            <h3 x-text="item.name"></h3>
             <div class="product-stars">
               <i data-feather="star" class="star-full"></i>
               <i data-feather="star" class="star-full"></i>
@@ -188,30 +196,10 @@
               <i data-feather="star" class="star-full"></i>
               <i data-feather="star" class="star-full"></i>
             </div>
-            <div class="product-price">IDR 59K <span>IDR 95K</span></div>
+            <div class="product-price"><span x-text="item.price"></span></div>
           </div>
-        </div>
-        <div class="product-card">
-          <div class="product-icons">
-            <a href="#"><i data-feather="shopping-cart"></i></a>
-            <a href="#" class="item-detail-button"
-              ><i data-feather="eye"></i
-            ></a>
           </div>
-          <div class="product-image">
-            <img src="img/produk2.jpg" alt="Product 1" />
-          </div>
-          <div class="product-content">
-            <h3>Kopi klasik</h3>
-            <div class="product-stars">
-              <i data-feather="star" class="star-full"></i>
-              <i data-feather="star" class="star-full"></i>
-              <i data-feather="star" class="star-full"></i>
-              <i data-feather="star" class="star-full"></i>
-              <i data-feather="star" class=""></i>
-            </div>
-            <div class="product-price">IDR 69K <span>IDR 97K</span></div>
-          </div>
+          </template>
         </div>
       </div>
     </section>
@@ -241,6 +229,7 @@
             <input type="text" placeholder="nama" />
           </div>
           <div class="input-group">
+
             <i data-feather="mail"></i>
             <input type="text" placeholder="email" />
           </div>

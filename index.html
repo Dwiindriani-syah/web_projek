@@ -28,7 +28,7 @@
 
   <body>
     <!-- navbar start -->
-    <nav class="navbar">
+    <nav class="navbar" x-data>
       <a href="#" class="navbar-logo">KOPI<span>NUSANTARA</span>.</a>
 
       <div class="navbar-nav">
@@ -38,6 +38,20 @@
         <a href="#contact">Kontak</a>
       </div>
 
+      <div class="navbar-extra">
+        <a href="#" id="search-button"><i data-feather="search"></i></a>
+          <a href="#" id="shopping-cart-button">
+          <i data-feather="shopping-cart"></i>
+          <span
+            class="quantity-badge"
+            x-show="$store.cart.quantity"
+            x-text="$store.cart.quantity"
+          ></span>
+        </a>
+        <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+      </div>
+      </div>
+
     <!-- search form start -->
       <div class="search-form">
         <input type="search" id="search-box" placeholder="search here..." />
@@ -45,17 +59,7 @@
       </div>
       <!-- search form end -->
 
-
-      <div class="navbar-extra">
-        <a href="#" id="search-button"><i data-feather="search"></i></a>
-        <a href="#" id="shopping-cart-button"
-          ><i data-feather="shopping-cart"></i
-        ></a>
-        <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
-      </div>
-      </div>
-      <!-- search form end -->
-      <!-- shooping cart start -->
+   <!-- shooping cart start -->
       <div class="shopping-cart">
         <div class="cart-item">
           <img src="img/produk1.jpeg" alt="Product 1" />
@@ -79,16 +83,13 @@
 
     <!-- navbar end -->
 
-    <!-- hero section start-->
+     <!-- hero section start-->
     <section class="hero" id="home">
-        <div class="mask-container">
-      <main class="content">
-        <h1>Selamat Datang Di <span>Kedai Kopi Nusantara</span>Kami</h1>
-        <p>Secangkir Rasa, Sejuta Cerita</p>
-      </main>
       <div class="mask-container">
         <main class="content">
-        </main>
+        <h1>Selamat Datang Di <span>Kedai Kopi Nusantara</span>Kami</h1>
+        <p>Secangkir Rasa, Sejuta Cerita</p>
+       </main>More actions
       </div>
     </section>
     <!-- hero section end-->
@@ -181,7 +182,7 @@
         <template x-for="(item, index) in items" x-key="index">
         <div class="product-card">
           <div class="product-icons">
-            <a href="#">
+            <a href="#" @click.prevent="$store.cart.add(item)">
                 <svg
                 width="24"
                 height="24"
@@ -232,16 +233,7 @@
                 stroke-linejoin="round">
           <use href="img//feather-sprite.svg#star" />
               </svg>
-              <svg
-                width="24"
-                height="24"
-                fill="currentColor"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round">
-          <use href="img//feather-sprite.svg#star" />
-              </svg>
+
               <svg
                 width="24"
                 height="24"
